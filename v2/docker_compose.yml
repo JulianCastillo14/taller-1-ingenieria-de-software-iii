@@ -1,0 +1,47 @@
+services:
+  broker:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: always
+  consumer_uno:
+    build: 
+      context: .
+      dockerfile: Dockerfile_Consumer
+    restart: always
+    environment:
+      - RABBITMQ_HOST=broker
+      - NUM_CONSUMER=1
+    depends_on:
+      - broker
+  consumer_dos:
+    build: 
+      context: .
+      dockerfile: Dockerfile_Consumer
+    restart: always
+    environment:
+      - RABBITMQ_HOST=broker
+      - NUM_CONSUMER=2
+    depends_on:
+      - broker
+  producer_uno:
+    build: 
+      context: .
+      dockerfile: Dockerfile_Producer
+    restart: always
+    environment:
+      - RABBITMQ_HOST=broker
+      - MENSAJE=Hola mundo desde producer uno :D
+    depends_on:
+      - broker
+  producer_dos:
+    build: 
+      context: .
+      dockerfile: Dockerfile_Producer
+    restart: always
+    environment:
+      - RABBITMQ_HOST=broker
+      - MENSAJE=Hola mundo desde producer dos :)
+    depends_on:
+      - broker
