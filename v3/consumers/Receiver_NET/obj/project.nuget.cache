@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "2ZG+MgHLUz95H1cMM/09BjNsFqQFR1bp56TzguZVfCAC4g8g4HpHXkbQ2hURY5mePfkZrMJEPptHfx1UV9p5Iw==",
+  "success": true,
+  "projectFilePath": "/home/juangaravito/Documents/taller-1-ingenieria-de-software-iii/v3/consumers/Receiver_NET/Receiver.csproj",
+  "expectedPackageFiles": [
+    "/home/juangaravito/.nuget/packages/rabbitmq.client/6.8.1/rabbitmq.client.6.8.1.nupkg.sha512",
+    "/home/juangaravito/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/home/juangaravito/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

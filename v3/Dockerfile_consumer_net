@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /app
+COPY consumers/Receiver_NET .
+RUN dotnet add package RabbitMQ.Client 
+CMD [ "dotnet", "run" ]

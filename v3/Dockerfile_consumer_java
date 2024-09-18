@@ -1,0 +1,6 @@
+FROM openjdk:22
+
+WORKDIR /app
+COPY consumers/Receiver_JAVA .
+
+CMD [ "java", "-cp" ,".:amqp-client-5.21.0.jar:slf4j-api-1.7.36.jar:slf4j-simple-1.7.36.jar", "Receiver" ]

@@ -1,0 +1,45 @@
+services:
+  broker:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
+  producer_uno:
+    build: 
+      context: .
+      dockerfile: Dockerfile_producer_js
+    depends_on:
+      - broker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_HOST=broker
+      - MENSAJE=Mensaje desde el productor de JS
+  producer_dos:
+    build: 
+      context: .
+      dockerfile: Dockerfile_producer_py
+    depends_on:
+      - broker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_HOST=broker
+      - MENSAJE=Mensaje desde el productor de Python
+  consumer_uno:
+    build: 
+      context: .
+      dockerfile: Dockerfile_consumer_java
+    depends_on:
+      - broker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_HOST=broker
+  consumer_dos:
+    build: 
+      context: .
+      dockerfile: Dockerfile_consumer_net
+    depends_on:
+      - broker
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_HOST=broker
