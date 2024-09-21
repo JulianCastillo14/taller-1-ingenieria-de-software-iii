@@ -1,0 +1,20 @@
+services:
+  broker:
+    image: rabbitmq:3.13-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: always
+  productor:
+    build: 
+      context: ./Productor
+    depends_on:
+      - broker
+    restart: always
+  consumidor:
+    build: 
+      context: ./Consumidor
+      dockerfile: Dockerfile
+    depends_on:
+      - broker
+    restart: always
